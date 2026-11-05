@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/*
+ * ByteVoice Bangladesh design tokens — "Deep Ink + Jade + Warm Ivory".
+ *
+ * Tokens are CSS variables so a subtree can switch palette with a class:
+ *   (default)      deep-ink surfaces  → hero, portal, footer
+ *   .theme-ivory   warm-ivory surfaces → alternating landing sections
+ * Tailwind utilities (bg-surface, text-ink, ...) read these variables at runtime.
+ */
+:root {
+  --canvas: #0b1220;
+  --surface: #0f192b;
+  --surface-raised: #142238;
+  --surface-hover: #1a2c48;
+  --surface-strong: #223557;
+  --line: #1e2e48;
+  --line-strong: #2d4263;
+
+  --ink: #f6f2ea;
+  --ink-muted: #aab5c7;
+  --ink-subtle: #7686a0;
+
+  --primary: #1f9d78;
+  --primary-hover: #2bb88f;
+  --primary-soft: #6fd8b5;
+  --primary-strong: #167a5c;
+  --accent: #c9a24b;
+  --warning: #e3b35c;
+  --danger: #f07a86;
+  --info: #7fb4e6;
+
+  --tone-teal-bg: rgb(31 157 120 / 0.14);
+  --tone-teal-fg: #7fe0bf;
+  --tone-teal-ring: rgb(31 157 120 / 0.4);
+  --tone-blue-bg: rgb(127 180 230 / 0.12);
+  --tone-blue-fg: #a9cdf0;
+  --tone-blue-ring: rgb(127 180 230 / 0.35);
+  --tone-amber-bg: rgb(227 179 92 / 0.13);
+  --tone-amber-fg: #efca85;
+  --tone-amber-ring: rgb(227 179 92 / 0.38);
+  --tone-rose-bg: rgb(240 122 134 / 0.12);
+  --tone-rose-fg: #f6a3ab;
+  --tone-rose-ring: rgb(240 122 134 / 0.38);
+  --tone-slate-bg: rgb(148 163 184 / 0.13);
+  --tone-slate-fg: #c3cddc;
+  --tone-slate-ring: rgb(148 163 184 / 0.3);
+
+  --shadow-card: 0 1px 0 0 rgb(255 255 255 / 0.04) inset, 0 18px 36px -26px rgb(0 0 0 / 0.65);
+  --shadow-glow: 0 0 0 1px rgb(31 157 120 / 0.4), 0 10px 32px -12px rgb(31 157 120 / 0.5);
+  --grid-line: rgb(246 242 234 / 0.035);
+}
+
+.theme-ivory {
+  --canvas: #f6f2ea;
+  --surface: #fffdf8;
+  --surface-raised: #efe9dc;
+  --surface-hover: #e8e0cf;
+  --surface-strong: #dcd2bd;
+  --line: #e3dbc9;
+  --line-strong: #cfc4ab;
+
+  --ink: #0b1220;
+  --ink-muted: #46526a;
+  --ink-subtle: #667389;
+
+  --primary: #137a5a;
+  --primary-hover: #0e6549;
+  --primary-soft: #137a5a;
+  --primary-strong: #0d5a42;
+  --accent: #8f6c1f;
+  --warning: #8a5b00;
+  --danger: #b4232f;
+  --info: #1f5f99;
+
+  --tone-teal-bg: rgb(19 122 90 / 0.1);
+  --tone-teal-fg: #0d5a42;
+  --tone-teal-ring: rgb(19 122 90 / 0.3);
+  --tone-blue-bg: rgb(31 95 153 / 0.09);
+  --tone-blue-fg: #1b4f80;
+  --tone-blue-ring: rgb(31 95 153 / 0.28);
+  --tone-amber-bg: rgb(176 120 20 / 0.12);
+  --tone-amber-fg: #7a4f00;
+  --tone-amber-ring: rgb(176 120 20 / 0.32);
+  --tone-rose-bg: rgb(180 35 47 / 0.09);
+  --tone-rose-fg: #8f1c26;
+  --tone-rose-ring: rgb(180 35 47 / 0.28);
+  --tone-slate-bg: rgb(70 82 106 / 0.1);
+  --tone-slate-fg: #3a465c;
+  --tone-slate-ring: rgb(70 82 106 / 0.25);
+
+  --shadow-card: 0 1px 0 0 rgb(255 255 255 / 0.7) inset, 0 14px 30px -22px rgb(60 45 10 / 0.35);
+  --shadow-glow: 0 0 0 1px rgb(19 122 90 / 0.35), 0 10px 28px -14px rgb(19 122 90 / 0.5);
+  --grid-line: rgb(11 18 32 / 0.05);
+
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-strong: var(--surface-strong);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-strong: var(--primary-strong);
+  --color-accent: var(--accent);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+
+  /* Latin glyphs from Plus Jakarta Sans; Bengali glyphs fall through to Hind Siliguri. */
+  --font-sans: var(--font-jakarta), var(--font-bangla), "Noto Sans Bengali", system-ui, sans-serif;
+  --font-bangla: var(--font-hind-siliguri), "Noto Sans Bengali", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --radius-card: 1.25rem;
+  --radius-control: 0.75rem;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 600ms;
+
+  --animate-ring: ring-out 2.4s var(--ease-out-soft) infinite;
+  --animate-fade-up: fade-up var(--duration-slow) var(--ease-out-soft) both;
+
+  @keyframes ring-out {
+    0% { transform: scale(0.85); opacity: 0.55; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+/* Bangla needs more generous leading and no negative tracking. */
+html[lang="bn"] body { line-height: 1.7; }
+html[lang="bn"] :is(h1, h2, h3, h4) { line-height: 1.35 !important; letter-spacing: 0 !important; }
+html[lang="bn"] .tracking-tight,
+html[lang="bn"] .tracking-wider { letter-spacing: 0; }
+html[lang="bn"] .uppercase { text-transform: none; }
+
+::selection { background: rgb(31 157 120 / 0.35); }
+
+:focus-visible {
+  outline: 2px solid var(--primary-hover);
+  outline-offset: 2px;
+}
+.theme-ivory :focus-visible { outline-color: var(--primary); }
+
+/* Status badge tones (theme-aware). */
+.tone-teal  { background: var(--tone-teal-bg);  color: var(--tone-teal-fg);  --tw-ring-color: var(--tone-teal-ring); }
+.tone-blue  { background: var(--tone-blue-bg);  color: var(--tone-blue-fg);  --tw-ring-color: var(--tone-blue-ring); }
+.tone-amber { background: var(--tone-amber-bg); color: var(--tone-amber-fg); --tw-ring-color: var(--tone-amber-ring); }
+.tone-rose  { background: var(--tone-rose-bg);  color: var(--tone-rose-fg);  --tw-ring-color: var(--tone-rose-ring); }
+.tone-slate { background: var(--tone-slate-bg); color: var(--tone-slate-fg); --tw-ring-color: var(--tone-slate-ring); }
+
+/* Decorative grid used in hero / auth backgrounds. */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
