@@ -129,16 +129,20 @@ def _verify_jwt_and_extract_sub(
         header = jwt.get_unverified_header(token)
         algorithm = header.get("alg")
 
-        # Legacy Supabase HS256 signing.
+        # HS256: use Supabase secret when configured;
+        # otherwise allow the local development/test secret.
         if algorithm == "HS256":
-            if not settings.supabase_jwt_secret:
+            signing_key = (
+                settings.supabase_jwt_secret
+                or settings.demo_call_token_secret
+            )
+
+            if not signing_key:
                 raise AppError(
-                    "Supabase JWT secret is not configured for HS256.",
+                    "No HS256 JWT signing secret is configured.",
                     500,
                     "jwt_configuration_error",
                 )
-
-            signing_key = settings.supabase_jwt_secret
 
         # Asymmetric Supabase signing using JWKS.
         elif algorithm in ("ES256", "RS256"):

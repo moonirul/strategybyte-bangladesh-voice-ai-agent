@@ -6,7 +6,8 @@ import uuid
 from datetime import UTC, datetime
 from typing import Literal
 
-from fastapi import APIRouter, Depends, Header, Query
+from fastapi import APIRouter, Depends, Header, Query, Request
+
 
 from app.core.config import Settings, get_settings
 from app.core.errors import AppError
@@ -16,6 +17,12 @@ from app.dependencies.auth import (
     issue_demo_call_token,
     verify_demo_call_token,
 )
+
+from app.integrations.vapi.webhook import (
+    ingest_vapi_webhook,
+    verify_vapi_webhook_secret,
+)
+
 from app.integrations.vapi.webhook import (
     VapiWebhookPayload,
     ingest_vapi_webhook,
@@ -455,12 +462,23 @@ def finish_demo_call(
 # ---- Vapi Webhook Endpoint ----
 
 
+
+# ---- Vapi Webhook Endpoint ----
+
 @router.post("/webhooks/vapi", tags=["webhooks"])
-def handle_vapi_webhook(
-    payload: VapiWebhookPayload,
+async def handle_vapi_webhook(
+    request: Request,
     x_vapi_secret: str | None = Header(default=None),
     settings: Settings = Depends(get_settings),
     repo: ClinicRepository = Depends(get_repository),
 ) -> dict[str, str]:
     verify_vapi_webhook_secret(x_vapi_secret, settings)
-    return ingest_vapi_webhook(payload, repo, settings)
+
+    raw_payload = await request.json()
+
+    return ingest_vapi_webhook(
+        raw_payload,
+        repo,
+        settings,
+    )
+
