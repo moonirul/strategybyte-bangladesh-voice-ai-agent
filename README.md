@@ -48,12 +48,11 @@ Traditional healthcare reception desks in Bangladesh face overwhelming challenge
 ---
 
 ## 📸 6. Application UI Screenshot
-
 | Frontend Dashboard Preview |
 | :---: |
-| !(image.png) |
-
+| ![Frontend Dashboard Preview](image.png) |
 ---
+
 
 ## 🚀 7. Project Setup & Execution
 
