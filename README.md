@@ -51,7 +51,7 @@ Traditional healthcare reception desks in Bangladesh face overwhelming challenge
 
 | Frontend Dashboard Preview |
 | :---: |
-| *\[ Insert Frontend Dashboard Screenshot Here \]* |
+| !(image.png) |
 
 ---
 
