@@ -85,7 +85,7 @@ npm run dev
 * **Backend Docs:** `http://localhost:8000/docs`
 
 ### **Live Environment**
-* **Live Frontend:** `http://72.62.115.32:3000/`
+* **Live Frontend:** `https://showers-gravity-orientation-dancing.trycloudflare.com/`
 * **Live Backend API Docs:** https://threats-mechanics-contractor-facilities.trycloudflare.com/docs
 
 ---
