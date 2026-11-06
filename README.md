@@ -87,7 +87,7 @@ npm run dev
 
 ### **Live Environment**
 * **Live Frontend:** `http://72.62.115.32:3000/`
-* **Live Backend API Docs:** https://threats-mechanics-contractor-facilities.trycloudflare.com/
+* **Live Backend API Docs:** https://threats-mechanics-contractor-facilities.trycloudflare.com/docs
 
 ---
 
